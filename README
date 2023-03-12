@@ -1,0 +1,5 @@
+Middleware
+-----------
+Middleware = middleware is a function which has access to request and response cycles
+Middleware is used with NEXT() so the request can be moved to other handlers otherwise the request cycle gets stopped.
+

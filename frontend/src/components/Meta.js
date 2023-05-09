@@ -12,9 +12,10 @@ const Meta = ({title, description, keywords}) => {
 };
 
 Meta.defaultProps = {
-  title: 'Welcome To ProShop',
-  description: 'We sell the best products for cheap',
-  keywords: 'electronics, buy electronics, cheap electroincs',
+  title: 'Welcome MPF Feed Shop Online',
+  description: 'We sell the best products for best Quality',
+  keywords:
+    'Poultry Feed, Chicks, Animal Feed, Fish Feed and Poultry Equipment',
 };
 
 export default Meta;

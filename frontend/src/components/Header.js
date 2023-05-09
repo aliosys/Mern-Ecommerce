@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Routes, Link, NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 // import {div} from 'react-router-bootstrap';
-import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
+import {Navbar, Nav, Container, NavDropdown, Image} from 'react-bootstrap';
 import SearchBox from './SearchBox';
 import {logout} from '../actions/userActions';
 
@@ -21,7 +21,9 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <Link to="/">
-            <Navbar.Brand>MPF FEED SHOP</Navbar.Brand>
+            <Navbar.Brand>
+              <Image src="/images/mpf-logo.png" alt="MPF LOGO" width={80} />
+            </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -29,6 +31,12 @@ const Header = () => {
               <Route render={({history}) => <SearchBox history={history} />} />
             </Routes>
             <Nav className="ml-auto">
+              <Nav.Link as={NavLink} to="/about">
+                About
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/blog">
+                Blogs
+              </Nav.Link>
               <Nav.Link as={NavLink} to="/cart">
                 <i className="fas fa-shopping-cart"></i> Cart
               </Nav.Link>

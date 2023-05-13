@@ -10,7 +10,7 @@ import ProductCarousel from '../components/ProductCarousel';
 import Meta from '../components/Meta';
 import {listProducts} from '../actions/productActions';
 
-const About = () => {
+const Shop = () => {
   const params = useParams();
 
   const keyword = params.keyword;
@@ -36,7 +36,7 @@ const About = () => {
           Go Back
         </Link>
       )}
-      <h1>About us</h1>
+      <h1>Latest Feeds</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -44,12 +44,21 @@ const About = () => {
       ) : (
         <>
           <Row>
-            <h2>About</h2>
+            {products.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
           </Row>
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ''}
+          />
         </>
       )}
     </>
   );
 };
 
-export default About;
+export default Shop;

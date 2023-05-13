@@ -18,11 +18,16 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        className="position-relative"
+        bg="dark"
+        variant="dark"
+        expand="lg"
+        collapseOnSelect>
         <Container>
           <Link to="/">
             <Navbar.Brand>
-              <Image src="/images/mpf-logo.png" alt="MPF LOGO" width={80} />
+              <Image src="/images/mpf-logo.png" alt="MPF LOGO" width={120} />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,8 +36,8 @@ const Header = () => {
               <Route render={({history}) => <SearchBox history={history} />} />
             </Routes>
             <Nav className="ml-auto">
-              <Nav.Link as={NavLink} to="/about">
-                About
+              <Nav.Link as={NavLink} to="/shop">
+                Shop
               </Nav.Link>
               <Nav.Link as={NavLink} to="/blog">
                 Blogs

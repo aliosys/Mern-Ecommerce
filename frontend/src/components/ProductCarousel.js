@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Carousel, Image, Col} from 'react-bootstrap';
+import {Carousel, Image, Col, Container, Row} from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import Loader from './Loader';
 import Message from './Message';
@@ -21,27 +21,29 @@ const ProductCarousel = () => {
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
-    <div className="d-flex fullwidth">
-      <Col className="col-6">
-        <Image fluid src="./images/logo.png" alt="logo" />
-      </Col>
-      <Col className="col-6 bg-light">
-        <h3 className="text-center">Top Selling Products</h3>
-        <Carousel pause="hover" className="bg-light border-0">
-          {products.map((product) => (
-            <Carousel.Item key={product._id}>
-              <Link to={`/product/${product._id}`}>
-                <Image src={product.image} alt={product.name} fluid />
-                <Carousel.Caption className="carousel-caption">
-                  <h2 className="text-dark">{product.name}</h2>
-                  <p className="text-dark">(INR {product.price})</p>
-                </Carousel.Caption>
-              </Link>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </Col>
-    </div>
+    <Container>
+      <Row>
+        <Col className="col-6">
+          <Image fluid src="./images/logo.png" alt="logo" />
+        </Col>
+        <Col className="col-6 bg-light">
+          <h3 className="text-center">Top Selling Products</h3>
+          <Carousel pause="hover" className="bg-light border-0">
+            {products.map((product) => (
+              <Carousel.Item key={product._id}>
+                <Link to={`/product/${product._id}`}>
+                  <Image src={product.image} alt={product.name} fluid />
+                  <Carousel.Caption className="carousel-caption">
+                    <h2 className="text-dark">{product.name}</h2>
+                    <p className="text-dark">(INR {product.price})</p>
+                  </Carousel.Caption>
+                </Link>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

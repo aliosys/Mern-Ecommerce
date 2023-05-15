@@ -1,0 +1,52 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+DTSTART:19451014T230000
+TZOFFSETFROM:+0630
+TZOFFSETTO:+0530
+TZNAME:IST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20230515T054111Z
+UID:3623258f-5d2e-4bbc-b80f-40ab69c60ca7
+DTSTART;TZID=Asia/Kolkata:20230518T140000
+DTEND;TZID=Asia/Kolkata:20230518T142000
+DESCRIPTION:Faisal Ali\,\n\nThanks for submitting your availability for the
+  Senior Frontend Engineer position.\n\nYou're confirmed for your interview
+  on:\n\nDate/Time: May 18\, 2023 2:00pm-2:20pm IST\nInterviewers: Rashmi S
+ ingh\n\nZoom: https://wini.zoom.us/j/83319422146?pwd=MEFGWStsQzAvOTJyeFRuM
+ zhCT05hQT09\n\nLet us know if you have any other questions before your int
+ erview.\n\nThanks\,\n\nRashmi\n\n--------------\nBelow are the video confe
+ rencing details for this specific calendar invite\n--------------\n\nRashm
+ i Singh is inviting you to a scheduled Zoom meeting.\n\nTopic: Interview F
+ aisal Ali Akhtar - Senior Frontend Engineer\nTime: May 18\, 2023 02:00 PM 
+ Mumbai\, Kolkata\, New Delhi\n\nJoin Zoom Meeting\nhttps://wini.zoom.us/j/
+ 83319422146?pwd=MEFGWStsQzAvOTJyeFRuMzhCT05hQT09\n\nMeeting ID: 833 1942 2
+ 146\nPasscode: 549223\nOne tap mobile\n+13092053325\,\,83319422146#\,\,\,\
+ ,*549223# US\n+13126266799\,\,83319422146#\,\,\,\,*549223# US (Chicago)\n\
+ nDial by your location\n        +1 309 205 3325 US\n        +1 312 626 679
+ 9 US (Chicago)\n        +1 646 558 8656 US (New York)\n        +1 646 931 
+ 3860 US\n        +1 301 715 8592 US (Washington DC)\n        +1 305 224 19
+ 68 US\n        +1 669 444 9171 US\n        +1 669 900 9128 US (San Jose)\n
+         +1 689 278 1000 US\n        +1 719 359 4580 US\n        +1 253 205
+  0468 US\n        +1 253 215 8782 US (Tacoma)\n        +1 346 248 7799 US 
+ (Houston)\n        +1 360 209 5623 US\n        +1 386 347 5053 US\n       
+  +1 507 473 4847 US\n        +1 564 217 2000 US\nMeeting ID: 833 1942 2146
+ \nPasscode: 549223\nFind your local number: https://wini.zoom.us/u/kc5HCwx
+ 9XB\n\nJoin by SIP\n83319422146@zoomcrc.com\n\nJoin by H.323\n162.255.37.1
+ 1 (US West)\n162.255.36.11 (US East)\n115.114.131.7 (India Mumbai)\n115.11
+ 4.115.7 (India Hyderabad)\n213.19.144.110 (Amsterdam Netherlands)\n213.244
+ .140.110 (Germany)\n103.122.166.55 (Australia Sydney)\n103.122.167.55 (Aus
+ tralia Melbourne)\n149.137.40.110 (Singapore)\n64.211.144.160 (Brazil)\n14
+ 9.137.68.253 (Mexico)\n69.174.57.160 (Canada Toronto)\n65.39.152.160 (Cana
+ da Vancouver)\n207.226.132.110 (Japan Tokyo)\n149.137.24.110 (Japan Osaka)
+ \nMeeting ID: 833 1942 2146\nPasscode: 549223
+LOCATION:
+SUMMARY:Interview with WIN Home Inspection
+END:VEVENT
+END:VCALENDAR

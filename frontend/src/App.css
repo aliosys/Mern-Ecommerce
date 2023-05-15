@@ -10,6 +10,16 @@
 .navbar-brand {
   position: absolute;
   top: 0px;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .navbar-brand img {
+    width: 70px;
+  }
+  .navbar-collapse {
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -77,4 +87,20 @@
 .banner-content {
   position: relative;
   z-index: 1;
+}
+/* Services */
+.services {
+  background: #0e584d;
+  color: #fff;
+}
+.services .icon svg {
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  fill: #e0b10b;
+  stroke: #e0b10b;
+}
+.services h2,
+.services h3 {
+  color: #e0b10b;
 }

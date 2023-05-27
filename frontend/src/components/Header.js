@@ -36,6 +36,9 @@ const Header = () => {
               <Route render={({history}) => <SearchBox history={history} />} />
             </Routes>
             <Nav className="ml-auto">
+              <Nav.Link as={NavLink} to="/about">
+                About
+              </Nav.Link>
               <Nav.Link as={NavLink} to="/shop">
                 Shop
               </Nav.Link>
@@ -72,6 +75,11 @@ const Header = () => {
                   <Nav.Link>
                     <NavDropdown.Item as={NavLink} to="/admin/productlist">
                       Products
+                    </NavDropdown.Item>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavDropdown.Item as={NavLink} to="/admin/bloglist">
+                      Blogs
                     </NavDropdown.Item>
                   </Nav.Link>
                   <NavLink>

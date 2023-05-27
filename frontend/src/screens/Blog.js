@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {Row, Col} from 'react-bootstrap';
-import Product from '../components/Product';
+import {Row, Col, Container} from 'react-bootstrap';
+import BlogComponent from '../components/Blog';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 import Meta from '../components/Meta';
-import {listProducts} from '../actions/productActions';
+import {listBlogs} from '../actions/blogActions';
 
 const Blog = () => {
   const params = useParams();
@@ -19,11 +19,11 @@ const Blog = () => {
 
   const dispatch = useDispatch();
 
-  const productList = useSelector((state) => state.productList);
-  const {loading, error, products, page, pages} = productList;
+  const blogList = useSelector((state) => state.blogList);
+  const {loading, error, blogs, page, pages} = blogList;
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber));
+    dispatch(listBlogs(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
 
   return (
@@ -36,16 +36,28 @@ const Blog = () => {
           Go Back
         </Link>
       )}
-      <h1>About us</h1>
+
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Row>
-            <h2>About</h2>
-          </Row>
+          <Container>
+            <h1>Latest Blogs</h1>
+            <Row>
+              {blogs.map((blog) => (
+                <Col key={blog._id} sm={12} md={6} lg={6} xl={6}>
+                  <BlogComponent blog={blog} />
+                </Col>
+              ))}
+            </Row>
+            <Paginate
+              pages={pages}
+              page={page}
+              keyword={keyword ? keyword : ''}
+            />
+          </Container>
         </>
       )}
     </>

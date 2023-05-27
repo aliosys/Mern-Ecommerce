@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import BlogScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -18,9 +19,12 @@ import UserEditScreen from './screens/UserEditScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
-import Blog from './screens/Blog';
+import BlogListScreen from './screens/BlogListScreen';
+import BlogEditScreen from './screens/BlogEditScreen';
 import Shop from './screens/Shop';
 import './App.css';
+import About from './screens/About';
+import Blog from './screens/Blog';
 
 const App = () => {
   return (
@@ -36,6 +40,7 @@ const App = () => {
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
           <Route path="/product/:id" element={<ProductScreen />} />
+          <Route path="/blog/:id" element={<BlogScreen />} />
           <Route path="/cart/:id?" element={<CartScreen />} />
           <Route path="/admin/userlist" element={<UserListScreen />} />
           <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
@@ -44,15 +49,23 @@ const App = () => {
             element={<ProductListScreen />}
             exact
           />
+          <Route path="/admin/bloglist" element={<BlogListScreen />} exact />
+          <Route
+            path="/admin/bloglist/:pageNumber"
+            element={<BlogListScreen />}
+            exact
+          />
           <Route
             path="/admin/productlist/:pageNumber"
             element={<ProductListScreen />}
             exact
           />
+
           <Route
             path="/admin/product/:id/edit"
             element={<ProductEditScreen />}
           />
+          <Route path="/admin/blog/:id/edit" element={<BlogEditScreen />} />
           <Route path="/admin/orderlist" element={<OrderListScreen />} />
           <Route path="/search/:keyword" element={<HomeScreen />} exact />
           <Route path="/page/:pageNumber" element={<HomeScreen />} exact />
@@ -63,6 +76,7 @@ const App = () => {
           />
           <Route path="/shop" element={<Shop />} exact />
           <Route path="/blog" element={<Blog />} exact />
+          <Route path="/about" element={<About />} exact />
           <Route path="/" element={<HomeScreen />} exact />
         </Routes>
       </main>

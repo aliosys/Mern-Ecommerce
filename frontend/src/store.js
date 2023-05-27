@@ -29,6 +29,16 @@ import {
   orderListReducer,
 } from './reducers/orderReducers';
 
+import {
+  blogListReducer,
+  blogDetailsReducer,
+  blogDeleteReducer,
+  blogCreateReducer,
+  blogUpdateReducer,
+  blogReviewCreateReducer,
+  blogTopRatedReducer,
+} from './reducers/blogReducers';
+
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
@@ -37,6 +47,13 @@ const reducer = combineReducers({
   productUpdate: productUpdateReducer,
   productReviewCreate: productReviewCreateReducer,
   productTopRated: productTopRatedReducer,
+  blogList: blogListReducer,
+  blogDetails: blogDetailsReducer,
+  blogDelete: blogDeleteReducer,
+  blogCreate: blogCreateReducer,
+  blogUpdate: blogUpdateReducer,
+  blogReviewCreate: blogReviewCreateReducer,
+  blogTopRated: blogTopRatedReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

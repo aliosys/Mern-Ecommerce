@@ -60,10 +60,9 @@ const deleteBlog = asyncHandler(async (req, res) => {
 const createBlog = asyncHandler(async (req, res) => {
   const blog = new Blog({
     title: 'Blog name',
+    content: 'Sample description',
     user: req.user._id,
     image: '/images/sample.jpg',
-    category: 'Sample category',
-    description: 'Sample description',
   });
 
   const createdBlog = await blog.save();
@@ -74,15 +73,14 @@ const createBlog = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateBlog = asyncHandler(async (req, res) => {
-  const {title, description, image, category} = req.body;
+  const {title, description, image} = req.body;
 
-  const product = await Product.findById(req.params.id);
+  const blog = await Blog.findById(req.params.id);
 
   if (blog) {
     blog.title = title;
-    blog.description = description;
+    blog.content = description;
     blog.image = image;
-    blog.category = category;
 
     const updatedBlog = await blog.save();
     res.json(updatedBlog);
@@ -96,7 +94,7 @@ const updateBlog = asyncHandler(async (req, res) => {
 // @route   GET /api/products/top
 // @access  Public
 const getTopBlog = asyncHandler(async (req, res) => {
-  const blogs = await Product.find({}).limit(3);
+  const blogs = await Blog.find({}).limit(3);
 
   res.json(blogs);
 });

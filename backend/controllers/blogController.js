@@ -73,13 +73,13 @@ const createBlog = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateBlog = asyncHandler(async (req, res) => {
-  const {title, description, image} = req.body;
+  const {title, content, image} = req.body;
 
   const blog = await Blog.findById(req.params.id);
 
   if (blog) {
     blog.title = title;
-    blog.content = description;
+    blog.content = content;
     blog.image = image;
 
     const updatedBlog = await blog.save();

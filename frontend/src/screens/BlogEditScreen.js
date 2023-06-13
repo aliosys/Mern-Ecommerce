@@ -74,6 +74,7 @@ const BlogEditScreen = ({history}) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log('content', content);
     dispatch(
       updateBlog({
         _id: blogId,
@@ -107,10 +108,29 @@ const BlogEditScreen = ({history}) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}></Form.Control>
             </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter image url"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}></Form.Control>
+              <Form.File
+                id="image-file"
+                label="Choose File"
+                custom
+                onChange={uploadFileHandler}></Form.File>
+              {uploading && <Loader />}
+            </Form.Group>
 
             <Form.Group controlId="content">
               <Form.Label>Blog Content</Form.Label>
-              <ReactQuill theme="snow" value={content} onChange={setContent} />
+              <ReactQuill
+                name="content"
+                theme="snow"
+                value={content}
+                onChange={setContent}
+              />
             </Form.Group>
 
             <Button type="submit" variant="primary">

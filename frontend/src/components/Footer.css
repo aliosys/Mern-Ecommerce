@@ -1,0 +1,25 @@
+.site-footer {
+  background-color: #111111;
+  background-image: none;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.footer-logo {
+  width: 6.25rem;
+  height: 6.25rem;
+  margin-bottom: 1rem;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.site-footer svg {
+  fill: rgba(255, 255, 255, 0.66);
+  width: 16px;
+  height: 16px;
+}
+.footer-social-item {
+  margin-left: 1rem;
+}

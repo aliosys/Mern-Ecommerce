@@ -19,10 +19,11 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        className="position-relative"
-        bg="dark"
-        variant="dark"
+        className="header-navbar"
+        // bg="dark"
+        // variant="dark"
         expand="lg"
+        fixed="top"
         collapseOnSelect>
         <Container>
           <Link to="/">

@@ -9,6 +9,7 @@ import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 import Meta from '../components/Meta';
 import {listBlogs} from '../actions/blogActions';
+import HeroSection from '../components/HeroSection';
 
 const Blog = () => {
   const params = useParams();
@@ -30,11 +31,16 @@ const Blog = () => {
     <>
       <Meta />
       {!keyword ? (
-        <ProductCarousel />
+        // <ProductCarousel />
+        <>{null}</>
       ) : (
-        <Link to="/" className="btn btn-light">
-          Go Back
-        </Link>
+        <Container>
+          <Row>
+            <Link to="/" className="btn btn-light">
+              Go Back
+            </Link>
+          </Row>
+        </Container>
       )}
 
       {loading ? (
@@ -43,6 +49,21 @@ const Blog = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <section className="container-fluid p-0">
+            <Row>
+              <div className="col-12">
+                <HeroSection
+                  heroTitle="Our Blogs"
+                  heroContent="  Welcome to our Munna Poultry Farm, established in 1992 and
+                    officially registered in 2006. With over three decades of
+                    experience in the industry, we have built a strong
+                    foundation and garnered a reputation for providing
+                    high-quality poultry products to our valued customers."
+                />
+              </div>
+            </Row>
+          </section>
+
           <Container>
             <h1>Latest Blogs</h1>
             <Row>

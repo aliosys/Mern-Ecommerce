@@ -1,3 +1,29 @@
+/* Typography */
+html {
+  font-size: 16px;
+}
+h1 {
+  font-size: 5rem;
+}
+h2 {
+  font-size: 4rem;
+}
+h3 {
+  font-size: 3rem;
+}
+h4 {
+  font-size: 2rem;
+}
+p {
+  font-size: 1rem;
+}
+.title-h1 {
+  font-size: 6rem;
+}
+.sub-title {
+  font-size: 1.5rem;
+}
+
 .App {
   text-align: center;
 }
@@ -7,6 +33,9 @@
   pointer-events: none;
 }
 /* Header */
+header {
+  height: 100px;
+}
 .navbar-brand {
   position: absolute;
   top: 0px;
@@ -26,7 +55,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.header-navbar {
+  backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid #fff;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -55,6 +87,7 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 .banner-overlay {
   background-color: transparent;
@@ -77,6 +110,15 @@
   width: 100%;
   object-fit: cover;
   z-index: -1;
+  transition: all 1s ease-in-out;
+  -webkit-animation: bg-scrolling-reverse 5.92s infinite;
+  -moz-animation: bg-scrolling-reverse 5.92s infinite;
+  -o-animation: bg-scrolling-reverse 5.92s infinite;
+  animation: bg-scrolling-reverse 5.92s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 .banner {
   display: flex;
@@ -87,6 +129,9 @@
 .banner-content {
   position: relative;
   z-index: 1;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 5px;
 }
 /* Services */
 .services {
@@ -94,11 +139,12 @@
   color: #fff;
 }
 .services .icon svg {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   display: block;
   fill: #e0b10b;
   stroke: #e0b10b;
+  stroke-width: 0.5px;
 }
 .services h2,
 .services h3 {
@@ -197,5 +243,47 @@
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
+  }
+}
+
+/* Animation */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@-webkit-keyframes bg-scrolling {
+  0% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    transform: scale(1.1) translate(-20px, 10px);
   }
 }

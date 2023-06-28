@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Row, Col, Container, Image, Button} from 'react-bootstrap';
 import Product from '../components/Product';
+import HeroSection from '../components/HeroSection';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
@@ -35,37 +36,33 @@ const About = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Container fluid>
+          <section className="container-fluid p-0">
             <Row>
-              <section className="banner">
-                <div className="banner-overlay"></div>
-                <Image src="/images/banner-main.jpeg" title="banner" />
-                <div className="banner-content text-white text-center">
-                  <h1>Munna Poultry Farm</h1>
-                  <p>
-                    All of our chicken grown by our farmers for best quality
-                  </p>
-                  <Button>Discover More</Button>
-                </div>
-              </section>
+              <div className="col-12">
+                <HeroSection
+                  heroTitle="About us"
+                  heroContent="  Welcome to our Munna Poultry Farm, established in 1992 and
+                    officially registered in 2006. With over three decades of
+                    experience in the industry, we have built a strong
+                    foundation and garnered a reputation for providing
+                    high-quality poultry products to our valued customers."
+                />
+              </div>
             </Row>
-          </Container>
+          </section>
           {/* Services provided */}
           <section className="about py-4">
             <Container className="py-4">
               <Row className="py-4">
-                <Col className="col-4">
-                  <h1>About us</h1>
-                </Col>
-                <Col className="col-8">
-                  <p>
-                    Welcome to our Munna Poultry Farm, established in 1992 and
-                    officially registered in 2006. With over three decades of
-                    experience in the industry, we have built a strong
-                    foundation and garnered a reputation for providing
-                    high-quality poultry products to our valued customers.
-                  </p>
-                  <p>
+                <Col className="col-8 mx-auto">
+                  <Image
+                    src="/images/about.png"
+                    alt="mpf-about"
+                    width="100%"
+                    height={400}
+                    style={{objectFit: 'cover'}}
+                  />
+                  <p className="mt-4">
                     At Munna Poultry Farm, we take immense pride in our
                     commitment to excellence and our passion for delivering
                     fresh and nutritious poultry products. From the very

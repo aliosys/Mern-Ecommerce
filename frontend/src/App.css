@@ -20,6 +20,9 @@ p {
 .title-h1 {
   font-size: 6rem;
 }
+.title {
+  font-size: 3.2rem;
+}
 .sub-title {
   font-size: 1.5rem;
 }
@@ -110,11 +113,11 @@ header {
   width: 100%;
   object-fit: cover;
   z-index: -1;
-  transition: all 1s ease-in-out;
-  -webkit-animation: bg-scrolling-reverse 5.92s infinite;
-  -moz-animation: bg-scrolling-reverse 5.92s infinite;
-  -o-animation: bg-scrolling-reverse 5.92s infinite;
-  animation: bg-scrolling-reverse 5.92s infinite;
+  transition: all 0.5s ease-in-out;
+  -webkit-animation: bg-scrolling-reverse 2.92s infinite;
+  -moz-animation: bg-scrolling-reverse 2.92s infinite;
+  -o-animation: bg-scrolling-reverse 2.92s infinite;
+  animation: bg-scrolling-reverse 2.92s infinite;
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
   -o-animation-timing-function: linear;
@@ -146,8 +149,20 @@ header {
   stroke: #e0b10b;
   stroke-width: 0.5px;
 }
+.services .icon {
+  width: 100%;
+  max-height: 200px;
+  overflow: hidden;
+}
+.services .icon img {
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
 .services h2,
-.services h3 {
+.services h3,
+.services h4 {
   color: #e0b10b;
 }
 

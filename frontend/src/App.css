@@ -36,9 +36,6 @@ p {
   pointer-events: none;
 }
 /* Header */
-header {
-  height: 100px;
-}
 .navbar-brand {
   position: absolute;
   top: 0px;
@@ -151,7 +148,8 @@ header {
 }
 .services .icon {
   width: 100%;
-  max-height: 200px;
+  height: 100%;
+  max-height: 150px;
   overflow: hidden;
 }
 .services .icon img {
@@ -300,5 +298,76 @@ header {
 @keyframes bg-scrolling {
   0% {
     transform: scale(1.1) translate(-20px, 10px);
+  }
+}
+
+/* header */
+.header {
+  transition: all 0.3s ease-in-out;
+}
+.header.small .logo-wrapper img {
+  width: 50px;
+  height: 50px;
+}
+.js-header-sticky {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+}
+.top-navbar {
+  background: #e24328;
+  color: #fff;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: #000000;
+}
+
+/* Dealer logo section */
+.dealer-logo-container {
+  overflow: hidden;
+}
+.dealer-logo-container .slider {
+  animation: slidein 30s linear infinite;
+  white-space: nowrap;
+}
+.dealer-logo-container .slider .logos {
+  width: 100%;
+  display: inline-block;
+  margin: 0px 0;
+}
+.dealer-logo-container .slider .logos .fab {
+  width: calc(100% / 3);
+  height: 100px;
+  animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+@keyframes slidein {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

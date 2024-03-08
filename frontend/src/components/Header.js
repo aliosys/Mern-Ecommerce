@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import {div} from 'react-router-bootstrap';
 import { Navbar, Nav, Container, NavDropdown, Image } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
@@ -15,22 +14,76 @@ const Header = () => {
   const logoutHandler = () => {
     dispatch(logout());
   };
+  // sticky header
+  const [small, setSmall] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => setSmall(window.pageYOffset > 100);
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
 
   return (
-    <header>
-      <Navbar
-        className="header-navbar"
-        // bg="dark"
-        // variant="dark"
-        expand="lg"
-        fixed="top"
-        collapseOnSelect
-      >
+    <header className={`header ${small ? "small js-header-sticky" : ""}`}>
+      <section className="top-navbar">
+        <Container>
+          <div className="d-flex justify-content-between">
+            <p className="mb-0">
+              {" "}
+              <span className="icon icon-phone">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  aria-hidden="true"
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m18.4 14.8-1.2-1.3a1.7 1.7 0 0 0-2.4 0l-.7.7a1.7 1.7 0 0 1-2.4 0l-1.9-1.9a1.7 1.7 0 0 1 0-2.4l.7-.6a1.7 1.7 0 0 0 0-2.5L9.2 5.6a1.6 1.6 0 0 0-2.4 0c-3.2 3.2-1.7 6.9 1.5 10 3.2 3.3 7 4.8 10.1 1.6a1.6 1.6 0 0 0 0-2.4Z"
+                  />
+                </svg>
+              </span>{" "}
+              for queries contact{" "}
+              <a href="tel:+918789505162">+91 878-950-5162</a>
+            </p>
+            <p className="mb-0">
+              <span className="icon icon-email">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  aria-hidden="true"
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="2"
+                    d="m3.5 5.5 7.9 6c.4.3.8.3 1.2 0l7.9-6M4 19h16c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H4a1 1 0 0 0-1 1v12c0 .6.4 1 1 1Z"
+                  />
+                </svg>
+              </span>{" "}
+              <a href="mailto:mpfsiwan@gmail.com">mpfsiwan@gmail.com</a>
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      <Navbar className="header-navbar" expand="lg" collapseOnSelect>
         <Container>
           <Link to="/">
-            <Navbar.Brand>
+            <div className="logo-wrapper">
               <Image src="/images/mpf-logo.png" alt="MPF LOGO" width={120} />
-            </Navbar.Brand>
+            </div>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

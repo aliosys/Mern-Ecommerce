@@ -6,13 +6,19 @@ import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
-import ProductCarousel from "../components/ProductCarousel";
+// import ProductCarousel from "../components/ProductCarousel";
 import Meta from "../components/Meta";
 import { listProducts } from "../actions/productActions";
 import poultryImage from "../assets/images/poultry-image2.jpeg";
 import poultryEquipment from "../assets/images/poultry-equipments.png";
 import freshChicken from "../assets/images/chicken.jpg";
 import chicks from "../assets/images/chicks-image.jpeg";
+import banner from "../assets/images/mpf-banner-2.png";
+import Carousel from "react-bootstrap/Carousel";
+import anmolBanner from "../assets/images/anmol-banner.jpeg";
+import anmolBanner2 from "../assets/images/anmol-banner2.png";
+import banner2 from "../assets/images/mpf-banner3.png";
+import DealerLogoSlider from "../components/DealerLogoSlider";
 
 const HomeScreen = () => {
   const params = useParams();
@@ -39,56 +45,28 @@ const HomeScreen = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          {/* <Container fluid>
-            <Row>
-              <section className="banner">
-                <div className="banner-overlay"></div>
-                <Image src="/images/banner-main.jpeg" title="banner" />
-                <div className="banner-content text-white text-center">
-                  <h1 className="title-h1">Munna Poultry Farm</h1>
-                  <p className="sub-title bold">
-                    All of our chicken grown by our farmers for best quality
+          <section className="hero">
+            <Carousel>
+              <Carousel.Item>
+                <Image src={banner} alt="banner" fluid />
+                {/* <Carousel.Caption>
+                  <h3>First slide label</h3>
+                  <p>
+                    Nulla vitae elit libero, a pharetra augue mollis interdum.
                   </p>
-                  <Button>
-                    <Link className="text-white" to="/about">
-                      Discover More
-                    </Link>
-                  </Button>
-                </div>
-              </section>
-            </Row>
-          </Container> */}
-          <Container fluid>
-            <div
-              id="carouselExampleSlidesOnly"
-              class="carousel slide"
-              data-ride="carousel"
-            >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    src="images/banner-main.jpeg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="images/feed-banner.jpg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="images/feed-banner2.jpg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-              </div>
-            </div>
-          </Container>
+                </Carousel.Caption> */}
+              </Carousel.Item>
+              <Carousel.Item>
+                <Image src={banner2} alt="banner" fluid />
+              </Carousel.Item>
+              <Carousel.Item>
+                <Image src={anmolBanner} alt="Anmol Feeds" fluid />
+              </Carousel.Item>
+              <Carousel.Item>
+                <Image src={anmolBanner2} alt="Anmol Feeds" fluid />
+              </Carousel.Item>
+            </Carousel>
+          </section>
           {/* Services provided */}
           <section className="services py-4">
             <Container className="py-4">
@@ -181,13 +159,16 @@ const HomeScreen = () => {
               keyword={keyword ? keyword : ""}
             />
           </Container>
-
-          <Container className="py-4" fluid>
+          {/* Dealer Logo Slider */}
+          <Container>
+            <DealerLogoSlider />
+          </Container>
+          <Container className="pt-4" fluid>
             <Row>
               <section className="whyussection position-relative d-flex align-items-center">
                 <div className="section-overlay"></div>
                 <Image src="/images/farm.jpeg" title="banner" />
-                <Container className="py-4">
+                <Container className="pt-4">
                   <Row>
                     <Col className="col-6 whyussection-content" xs={12} lg={6}>
                       <h2>Why Choose Us</h2>

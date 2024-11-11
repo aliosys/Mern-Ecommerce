@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, NavDropdown, Image } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
+import "./Header.css";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ const Header = () => {
         </Container>
       </section>
 
-      <Navbar className="header-navbar" expand="lg" collapseOnSelect>
+      <Navbar className="header-navbar py-1" expand="lg" collapseOnSelect>
         <Container>
           <Link to="/">
             <div className="logo-wrapper">

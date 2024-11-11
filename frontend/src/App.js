@@ -30,7 +30,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="pt-3 main">
+      <main className="pt-0 main">
         <Routes>
           <Route path="/order/:id" element={<OrderScreen />} />
           <Route path="/shipping" element={<ShippingScreen />} />

@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {Carousel, Image, Col, Container, Row} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import Loader from './Loader';
-import Message from './Message';
-import {listTopProducts} from '../actions/productActions';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Carousel, Image, Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "./Loader";
+import Message from "./Message";
+import { listTopProducts } from "../actions/productActions";
 
 const ProductCarousel = () => {
   const dispatch = useDispatch();
 
   const productTopRated = useSelector((state) => state.productTopRated);
-  const {loading, error, products} = productTopRated;
+  const { loading, error, products } = productTopRated;
 
   useEffect(() => {
     dispatch(listTopProducts());
@@ -23,10 +23,7 @@ const ProductCarousel = () => {
   ) : (
     <Container>
       <Row>
-        <Col className="col-6">
-          <Image fluid src="./images/logo.png" alt="logo" />
-        </Col>
-        <Col className="col-6 bg-light">
+        <Col className="col-12 bg-light">
           <h3 className="text-center">Top Selling Products</h3>
           <Carousel pause="hover" className="bg-light border-0">
             {products.map((product) => (
@@ -34,7 +31,7 @@ const ProductCarousel = () => {
                 <Link to={`/product/${product._id}`}>
                   <Image src={product.image} alt={product.name} fluid />
                   <Carousel.Caption className="carousel-caption">
-                    <h2 className="text-dark">{product.name}</h2>
+                    {/* <h2 className="text-dark">{product.name}</h2> */}
                     <p className="text-dark">(INR {product.price})</p>
                   </Carousel.Caption>
                 </Link>

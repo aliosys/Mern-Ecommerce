@@ -8,38 +8,27 @@ const DealerLogoSlider = () => {
       <div class="dealer-logo-container h-100">
         <div class="row align-items-center h-100">
           <div class="container rounded">
-            <h3 class="text-left title">Dealership in:</h3>
+            <h4 class="text-left">Dealership in:</h4>
             <div class="slider">
               <div class="logos">
-                <image className="fab" src={anmolLogo} alt="anmol logo" />
-                <image
+                <img className="fab" src={anmolLogo} alt="anmol logo" />
+                <img
                   className="fab"
                   src={mahaLogo}
                   alt="maharashtra feeds logo"
                 />
-                <p className="fab">
-                  <b>Anmol Feeds, Nouriture</b>
-                </p>
-                <p className="fab">
-                  <b>Maharashtra Feeds</b>
-                </p>
                 <p className="fab">
                   <b>Shalimar Hatchery, Gorakhpur</b>
                 </p>
               </div>
               <div class="logos">
-                <image className="fab" src={anmolLogo} alt="anmol logo" />
-                <image
+                <img className="fab" src={anmolLogo} alt="anmol logo" />
+                <img
                   className="fab"
                   src={mahaLogo}
                   alt="maharashtra feeds logo"
                 />
-                <p className="fab">
-                  <b>Anmol Feeds, Nouriture</b>
-                </p>
-                <p className="fab">
-                  <b>Maharashtra Feeds</b>
-                </p>
+
                 <p className="fab">
                   <b>Shalimar Hatchery, Gorakhpur</b>
                 </p>

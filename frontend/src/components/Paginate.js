@@ -1,9 +1,10 @@
-import React from 'react';
-import {Pagination} from 'react-bootstrap';
-// import {LinkContainer} from 'react-router-bootstrap';
-import {Link} from 'react-router-dom';
+import React from "react";
+import { Pagination } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const Paginate = ({pages, page, isAdmin = false, keyword = ''}) => {
+const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
+  console.log("Current Page:", page, "Total Pages:", pages);
+
   return (
     pages > 1 && (
       <Pagination>
@@ -16,8 +17,14 @@ const Paginate = ({pages, page, isAdmin = false, keyword = ''}) => {
                   ? `/search/${keyword}/page/${x + 1}`
                   : `/page/${x + 1}`
                 : `/admin/productlist/${x + 1}`
-            }>
-            <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
+            }
+          >
+            <span
+              className="btn btn-dark px-3 py-1 mx-2"
+              active={x + 1 === page}
+            >
+              {x + 1}
+            </span>
           </Link>
         ))}
       </Pagination>

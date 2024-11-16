@@ -17,8 +17,11 @@ const DealerLogoSlider = () => {
                   src={mahaLogo}
                   alt="maharashtra feeds logo"
                 />
-                <p className="fab">
+                <p className="fab" style={{ width: "350px" }}>
                   <b>Shalimar Hatchery, Gorakhpur</b>
+                </p>
+                <p className="fab">
+                  <b>Haryana Hatchery</b>
                 </p>
               </div>
               <div class="logos">
@@ -29,8 +32,11 @@ const DealerLogoSlider = () => {
                   alt="maharashtra feeds logo"
                 />
 
-                <p className="fab">
+                <p className="fab" style={{ width: "350px" }}>
                   <b>Shalimar Hatchery, Gorakhpur</b>
+                </p>
+                <p className="fab">
+                  <b>Haryana Hatchery</b>
                 </p>
               </div>
             </div>

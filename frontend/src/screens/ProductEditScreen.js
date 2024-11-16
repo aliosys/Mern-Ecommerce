@@ -1,33 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-import {Link, useNavigate, useParams} from 'react-router-dom';
-import {Form, Button} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import FormContainer from '../components/FormContainer';
-import {listProductDetails, updateProduct} from '../actions/productActions';
-import {PRODUCT_UPDATE_RESET} from '../constants/productConstants';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
+import FormContainer from "../components/FormContainer";
+import { listProductDetails, updateProduct } from "../actions/productActions";
+import { listCategory } from "../actions/categoryActions";
+import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import { Col, Container } from "react-bootstrap";
 
-const ProductEditScreen = ({history}) => {
+const ProductEditScreen = ({ history }) => {
   const params = useParams();
   const productId = params.id;
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [image, setImage] = useState('');
-  const [brand, setBrand] = useState('');
-  const [category, setCategory] = useState('');
+  const [image, setImage] = useState("");
+  const [brand, setBrand] = useState("");
+  const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const productDetails = useSelector((state) => state.productDetails);
-  const {loading, error, product} = productDetails;
+  const categoryList = useSelector((state) => state.categoryList);
+  const { loading, error, product } = productDetails;
 
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
@@ -38,11 +40,12 @@ const ProductEditScreen = ({history}) => {
 
   useEffect(() => {
     if (successUpdate) {
-      dispatch({type: PRODUCT_UPDATE_RESET});
-      navigate('/admin/productlist');
+      dispatch({ type: PRODUCT_UPDATE_RESET });
+      navigate("/admin/productlist");
     } else {
       if (!product.name || product._id !== productId) {
         dispatch(listProductDetails(productId));
+        dispatch(listCategory());
       } else {
         setName(product.name);
         setPrice(product.price);
@@ -55,20 +58,17 @@ const ProductEditScreen = ({history}) => {
     }
   }, [dispatch, history, productId, product, successUpdate]);
 
+  console.log("category", categoryList);
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append("image", file);
     setUploading(true);
 
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      };
-
-      const {data} = await axios.post('/api/upload', formData, config);
+      const config = { headers: { "Content-Type": "multipart/form-data" } };
+      const { data } = await axios.post("/api/upload", formData, config);
 
       setImage(data);
       setUploading(false);
@@ -90,17 +90,21 @@ const ProductEditScreen = ({history}) => {
         category,
         description,
         countInStock,
-      }),
+      })
     );
   };
 
   return (
-    <>
-      <Link to="/admin/productlist" className="btn btn-light my-3">
+    <Container className="mb-4 mt-4">
+      <Link
+        to="/admin/productlist"
+        className="btn-dark my-3 p-2 text-white"
+        style={{ textDecoration: "none", color: "blue" }}
+      >
         Go Back
       </Link>
       <FormContainer>
-        <h1>Edit Product</h1>
+        <h3>Edit Product</h3>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
@@ -108,85 +112,112 @@ const ProductEditScreen = ({history}) => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="name"
-                placeholder="Enter name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}></Form.Control>
-            </Form.Group>
+          <>
+            <Col className="row align-items-center">
+              <Col className="col-6">
+                <p>Product Preview</p>
+              </Col>
+              <Col className="col-6">
+                <div className="text-center">
+                  <img src={image} alt={name} width={100} className="fluid" />
+                </div>
+              </Col>
+            </Col>
+            <form onSubmit={submitHandler}>
+              <div className="form-group">
+                <label>Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="form-control"
+                />
+              </div>
 
-            <Form.Group controlId="price">
-              <Form.Label>Price</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}></Form.Control>
-            </Form.Group>
+              <div className="form-group">
+                <label>Price</label>
+                <input
+                  type="number"
+                  placeholder="Enter price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  className="form-control"
+                />
+              </div>
 
-            <Form.Group controlId="image">
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter image url"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}></Form.Control>
-              <Form.File
-                id="image-file"
-                label="Choose File"
-                custom
-                onChange={uploadFileHandler}></Form.File>
-              {uploading && <Loader />}
-            </Form.Group>
+              <div className="form-group">
+                <label>Image</label>
+                <input
+                  type="text"
+                  placeholder="Enter image URL"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                  className="form-control"
+                />
+                <input
+                  type="file"
+                  onChange={uploadFileHandler}
+                  className="form-control-file mt-2"
+                />
+                {uploading && <Loader />}
+              </div>
 
-            <Form.Group controlId="brand">
-              <Form.Label>Brand</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}></Form.Control>
-            </Form.Group>
+              <div className="form-group">
+                <label>Brand</label>
+                <input
+                  type="text"
+                  placeholder="Enter brand"
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
+                  className="form-control"
+                />
+              </div>
 
-            <Form.Group controlId="countInStock">
-              <Form.Label>Count In Stock</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter countInStock"
-                value={countInStock}
-                onChange={(e) =>
-                  setCountInStock(e.target.value)
-                }></Form.Control>
-            </Form.Group>
+              <div className="form-group">
+                <label>Count In Stock</label>
+                <input
+                  type="number"
+                  placeholder="Enter stock count"
+                  value={countInStock}
+                  onChange={(e) => setCountInStock(e.target.value)}
+                  className="form-control"
+                />
+              </div>
 
-            <Form.Group controlId="category">
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}></Form.Control>
-            </Form.Group>
+              <div className="form-group">
+                <label>Category</label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="form-control"
+                >
+                  <option value="">Select category</option>
+                  {categoryList?.category?.map((cat) => (
+                    <option value={cat.category_key}>{cat.name}</option>
+                  ))}
+                </select>
+              </div>
 
-            <Form.Group controlId="description">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}></Form.Control>
-            </Form.Group>
+              <div className="form-group">
+                <label>Description</label>
+                <input
+                  type="text"
+                  placeholder="Enter description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="form-control"
+                />
+              </div>
 
-            <Button type="submit" variant="primary">
-              Update
-            </Button>
-          </Form>
+              <button type="submit" className="btn btn-primary mt-3">
+                Update
+              </button>
+            </form>
+          </>
         )}
       </FormContainer>
-    </>
+    </Container>
   );
 };
 

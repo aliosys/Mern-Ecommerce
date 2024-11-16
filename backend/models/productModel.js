@@ -32,15 +32,10 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     brand: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
-      ref: "Brand",
     },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "Category",
-    },
+    category: { type: mongoose.Schema.Types.Mixed, default: "Sample Category" },
     description: {
       type: String,
       required: true,

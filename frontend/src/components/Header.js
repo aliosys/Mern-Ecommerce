@@ -33,7 +33,7 @@ const Header = () => {
     <header className={`header ${small ? "small js-header-sticky" : ""}`}>
       <section className="top-navbar">
         <Container>
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between flex-wrap">
             <p className="mb-0">
               {" "}
               <span className="icon icon-phone">

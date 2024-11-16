@@ -35,6 +35,8 @@ const ProductListScreen = () => {
   const { brands } = brandList;
   const { loading, error, products, page, pages } = productList;
 
+  console.log("page number", pageNumber);
+
   const [show, setShow] = useState(false);
   const [brandId, setBrandId] = useState("");
   const [brand, setBrand] = useState("");
@@ -136,11 +138,6 @@ const ProductListScreen = () => {
               <i className="fas fa-plus"></i> Create Product
             </Button>
           </Col>
-          <Col className="text-right">
-            <Button className="my-3" onClick={createBrandHandler}>
-              <i className="fas fa-plus"></i> Create Brand
-            </Button>
-          </Col>
         </Container>
       </Row>
       {loadingDelete && <Loader />}
@@ -172,7 +169,9 @@ const ProductListScreen = () => {
                       <td>{product._id}</td>
                       <td>{product.name}</td>
                       <td>₹ {product.price}</td>
-                      <td>{product.category}</td>
+                      <td>
+                        {product.category.replaceAll("_", " ").toUpperCase()}
+                      </td>
                       <td>{product.brand}</td>
                       <td>
                         <Link to={`/admin/product/${product._id}/edit`}>
@@ -193,7 +192,19 @@ const ProductListScreen = () => {
                 </tbody>
               </Table>
               <Paginate pages={pages} page={page} isAdmin={true} />
-              <h3 className="title">Categories</h3>
+
+              {/* Brands */}
+
+              <h3 className="title">Brands</h3>
+              <Row className="align-items-center">
+                <Container>
+                  <Col className="text-right">
+                    <Button className="my-3" onClick={createBrandHandler}>
+                      <i className="fas fa-plus"></i> Create Brand
+                    </Button>
+                  </Col>
+                </Container>
+              </Row>
               <Table striped bordered hover responsive className="table-sm">
                 <thead>
                   <tr>

@@ -156,23 +156,85 @@ const HomeScreen = () => {
         <>
           <Container>
             <h1 className="title">Latest Feeds</h1>
-            <Row>
-              {products.map((product) => (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
+            <Row className="g-2 d-flex align-items-stretch">
+              {products
+                .filter((product) => product.category === "poultry_feeds")
+                .map((filteredProduct) => (
+                  <Col
+                    key={filteredProduct._id}
+                    sm={12}
+                    md={6}
+                    lg={4}
+                    xl={3}
+                    className="d-flex"
+                  >
+                    <Product product={filteredProduct} />
+                  </Col>
+                ))}
             </Row>
             <Paginate
               pages={pages}
               page={page}
               keyword={keyword ? keyword : ""}
             />
+
+            <h4>Poultry Equipments</h4>
+            <Row className="g-2 d-flex align-items-stretch">
+              {products
+                .filter((product) => product.category === "poultry_equipment")
+                .map((filteredProduct) => (
+                  <Col
+                    key={filteredProduct._id}
+                    sm={12}
+                    md={6}
+                    lg={4}
+                    xl={3}
+                    className="d-flex"
+                  >
+                    <Product product={filteredProduct} />
+                  </Col>
+                ))}
+            </Row>
           </Container>
+
+          {/* Hatching */}
+
+          <Row className="g-2 d-flex align-items-stretch">
+            <Container className="mt-4">
+              <h4>Book Young Broiler Birds</h4>
+            </Container>
+            <Container fluid className="service-section">
+              {/* Background Image */}
+              <div className="service-bg"></div>
+
+              {/* Content */}
+              <div className="container">
+                <h2>High-Quality Broiler Chicks</h2>
+                <p>
+                  At Munna Poultry Farm, we ensure that you get only the finest,
+                  healthiest broiler chicks for your poultry farming needs. Our
+                  chicks are nurtured in a hygienic environment to guarantee
+                  optimal growth and productivity. Whether you are starting a
+                  new poultry farm or expanding your current setup, we are here
+                  to assist.
+                </p>
+                <p>
+                  Booking your broiler chicks has never been easier. With our
+                  streamlined booking facility, you can reserve your batch of
+                  high-quality chicks online or by visiting our farm. Enjoy
+                  hassle-free service and unmatched reliability with Munna
+                  Poultry Farm.
+                </p>
+                <a href="#book-now" className="cta-button">
+                  Book Now
+                </a>
+              </div>
+            </Container>
+          </Row>
         </>
       )}
       {/* Dealer Logo Slider */}
-      <Container>
+      <Container className="mt-4">
         <DealerLogoSlider />
       </Container>
       <Container className="pt-4" fluid>
